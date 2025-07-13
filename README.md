@@ -3,7 +3,16 @@ Documentation for the Lenovo Yoga Book 9i Gen10.
 
 I will accept PRs for the Yoga Book 9i Gen8, Gen9, and other future revisions if they come!
 
+To-do
+
+Check UEFI options vs what is available in software (such as power on when [action is done])
+Check if User Prescence sensing exists
+
+
 To-do with a Windows reinstallation - restoring to OEM defaults
+
+- Check available drivers on the internet vs what is currently only available on the OEM install
+- Check what drivers can install via Windows update vs other party solutions (Lenovo Vantage/Commercial Vantage, SDIO, etc.)
 
 To-do for Linux support
 
@@ -32,3 +41,7 @@ To-do for Linux support
 - Automatic rotation
 - Secure Boot support
 - Using a Thunderbolt 3/4 dock, USB4 dock
+- Ambient brightness sensor support
+- Default screen
+
+
