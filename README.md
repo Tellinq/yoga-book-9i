@@ -3,6 +3,7 @@ Documentation for the Lenovo Yoga Book 9i Gen10.
 
 I will accept PRs for the Yoga Book 9i Gen8, Gen9, and other future revisions if they come!
 
+To-do with a Windows reinstallation - restoring to OEM defaults
 
 To-do for Linux support
 
