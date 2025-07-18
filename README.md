@@ -5,6 +5,8 @@ I will accept PRs for the Yoga Book 9i Gen8, Gen9, and other future revisions if
 
 To-do
 
+- Must plug in an additional keyboard to enter the UEFI (press F2 to enter Setup, F12 to enter one time boot menu)
+- - Provided bluetooth keyboard Type-C port is for power only. you cannot use it for data. Must use a Bluetooth connection
 - User Prescence exists
 - Power on when opening the lid exists. It's an option in the UEFI and in software
 - I did not see an option to power on when AC adapter is plugged in. Curious if it does as I have modern Thinkpads such as the T16 Gen 3 which has this feature in the UEFI
