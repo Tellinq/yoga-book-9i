@@ -21,7 +21,14 @@ To-do for Linux support
 I will be testing a Live ISO first. for full testing, I will install a Linux distribution that frequently updates the Linux kernel. This is a high requirement as this is incomplete for support. Improvements will happen throughout time
 
 - IR Webcam support - test with howdy-beta
+### Faical Recognition
+
+The IR Camera works with [howdy](https://github.com/boltgolt/howdy). Fedora-based distribution users can install [howdy-beta](https://copr.fedorainfracloud.org/coprs/principis/howdy-beta/) with Copr.
+
+The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
+
 - Camera support
+   - Works
 - Microphone support
 - Speaker support
    - Not present in 6.14. untested in further revisions
