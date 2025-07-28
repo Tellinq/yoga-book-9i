@@ -31,7 +31,7 @@ The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
    - Works
 - Microphone support
 - Speaker support
-   - Not present in 6.14. untested in further revisions
+   - Needs Kernel 6.15+, but speaker bass is not enabled due to a bug
 - "Tablet mode"
 - "Software experience" missing
 - Maximum finger support (test with libinput debug gui)
