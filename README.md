@@ -13,8 +13,9 @@ To-do
 
 To-do with a Windows reinstallation - restoring to OEM defaults
 
-- Check available drivers on the internet vs what is currently only available on the OEM install
-- Check what drivers can install via Windows update vs other party solutions (Lenovo Vantage/Commercial Vantage, SDIO, etc.)
+- All drivers can be installed in tandem through SDIO, Windows Update, and Lenovo Vantage
+- Pen targets the opposite screen however. Tried using the drivers provided in the OEM install without luck. could be me using SDIO first, not sure.
+- Installing User Center will restore full software experience
 
 To-do for Linux support
 
@@ -32,15 +33,19 @@ The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
 - Microphone support
 - Speaker support
    - Needs Kernel 6.15+, but speaker bass is not enabled due to a bug
+   - Update kernel 6.16+: Bass speakers will work, but are stuck at 100%. This is at least an improvement as this could be now tweaked by a soft mixer temporarily
 - "Tablet mode"
+   - Not detected as is. Possible getting around as when you arent in a laptop orientation, there is indication that a "touchpad" is turned off
 - "Software experience" missing
 - Maximum finger support (test with libinput debug gui)
+    - Cant fully test. top screen seems to detect my fingers but not all 10. Bottom can intermittiently detect one finger, but it can be considered non existent in real world use case
 - function key support
 - copilot key
    - Untested. should be bindable
 - keyboard brightness
    - Cannot configure in Plasma. Must use built in function
 - Screen brightness
+    - Top screen can be adjusted as is. Bottom is set to maximum brightness. This can be adjusted through redshift likely. ive found turning on KDE HDR then lets you adjust both screen brightness individually, so you basically get best of both worlds with HDR contrast and brightness functionality.
 - HDR support
    - Supported on both screens
 - Adaptive sync support
@@ -67,6 +72,8 @@ The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
 - Secure Boot support
     - Didnt exactly let me enroll any keys in Ventoy despite enabling 3rd party CAs in the UEFI
 - Using a Thunderbolt 3/4 dock, USB4 dock
+    - Works as intended. Tested using Lenovo Thinkpad Universal Thunderbolt 4 Docking Station, various hubs, and an older Dell WD15 thunderbolt 3 dock
+    - Thinkpad docking station power button will work. Haven't 100% tested on Linux despite confirming on Windows. I expect this should work just fine. While not as needed as a traditional Thinkpad with a power button on the keyboard deck, it can be potentially mote convenient depending where you have the Yoga Book 9i docked
 - Ambient brightness sensor support
 - Default screen
     - Top screen is the default
