@@ -1,12 +1,12 @@
 # yoga-book-9i
-Documentation for the Lenovo Yoga Book 9i Gen10.
+Findings for the Lenovo Yoga Book 9i Gen10.
 
 I will accept PRs for the Yoga Book 9i Gen8, Gen9, and other future revisions if they come!
 
 To-do
 
 - Must plug in an additional keyboard to enter the UEFI (press F2 to enter Setup, F12 to enter one time boot menu)
-- - Provided bluetooth keyboard Type-C port is for power only. you cannot use it for data. Must use a Bluetooth connection
+  - Provided bluetooth keyboard Type-C port is for power only. you cannot use it for data. Must use a Bluetooth connection
 - User Prescence exists
 - Power on when opening the lid exists. It's an option in the UEFI and in software
 - I did not see an option to power on when AC adapter is plugged in. Curious if it does as I have modern Thinkpads such as the T16 Gen 3 which has this feature in the UEFI
@@ -21,7 +21,6 @@ To-do for Linux support
 
 I will be testing a Live ISO first. for full testing, I will install a Linux distribution that frequently updates the Linux kernel. This is a high requirement as this is incomplete for support. Improvements will happen throughout time
 
-- IR Webcam support - test with howdy-beta
 ### Faical Recognition
 
 The IR Camera works with [howdy](https://github.com/boltgolt/howdy). Fedora-based distribution users can install [howdy-beta](https://copr.fedorainfracloud.org/coprs/principis/howdy-beta/) with Copr.
@@ -31,6 +30,7 @@ The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
 - Camera support
    - Works
 - Microphone support
+   - Works
 - Speaker support
    - Needs Kernel 6.15+, but speaker bass is not enabled due to a bug
    - Update kernel 6.16+: Bass speakers will work, but are stuck at 100%. This is at least an improvement as this could be now tweaked by a soft mixer temporarily
@@ -40,8 +40,9 @@ The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
 - Maximum finger support (test with libinput debug gui)
     - Cant fully test. top screen seems to detect my fingers but not all 10. Bottom can intermittiently detect one finger, but it can be considered non existent in real world use case
 - function key support
+   - For universal keys, works just fine. As anticipated, none of the lenovo special keys can be used ir bound to KDE shortcuts out of the box
 - copilot key
-   - Untested. should be bindable
+   - Technically bindable. i never can get it to work well on KDE shortcuts on any of my copilot key supported devices anyway
 - keyboard brightness
    - Cannot configure in Plasma. Must use built in function
 - Screen brightness
@@ -54,15 +55,17 @@ The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
    - Windows is 200% as with most 2800x1800 and 2560x1600 14-16" displays
    - KDE 6.3+ will default to 160% scaling on both displays
 - Start-Stop charging support
-   - Tested on Kernel 6.14 - a toggle exists. No option to configure further is present. Unknown if what is done in Windows Lenovo Vantage exists
+   - Tested on Kernel 6.14 - a toggle exists. No option to configure further is present. 
 - WiFi and Bluetooth support
     - Both are supported out of the box
 - Intel graphics via Mesa
     - Seems to work. I cannot seem to get a Plasma X11 session. Plasma Wayland seems to work fine as Wayland for these devices should be used anyways
 - detecting physical keyboard and turning off display
+    - Not detectable
 - "merging the two screens together" support
     - This isnt a real thing anyways. this is just software in Windows that makes a window overflow the top taskbar and into the second acreen. could be possible with some software tweaks
 - Suspend/sleep
+    - Works
 - Power profiles (wattage and fan speeds)
     - There is a slider in Plasma. whether they actually work I have not tested
 - Variable refresh rate
