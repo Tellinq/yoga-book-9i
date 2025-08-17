@@ -3,24 +3,55 @@ Findings for the Lenovo Yoga Book 9i Gen10.
 
 I will accept PRs for the Yoga Book 9i Gen8, Gen9, and other future revisions if they come!
 
-To-do
+# Enter the UEFI
 
-- Must plug in an additional keyboard to enter the UEFI (press F2 to enter Setup, F12 to enter one time boot menu)
-  - Provided bluetooth keyboard Type-C port is for power only. you cannot use it for data. Must use a Bluetooth connection
-  - You can flip the camera kill switch repeatedly during power on to enter the Novo menu. Touch is supported until you reach an OS that does not share the same support (Windows Boot Manager Menu, Limine, GRUB, etc.)
-- User Prescence exists
-- Power on when opening the lid exists. It's an option in the UEFI and in software
-- I did not see an option to power on when AC adapter is plugged in. Curious if it does as I have modern Thinkpads such as the T16 Gen 3 which has this feature in the UEFI
+Enter the Novo menu in one of two ways
+1. Power off the device
+   - Upon power on, repeatedly flip the camera kill switch
+   - Use a paper clip or similarly sized tool to press the Novo button
 
-To-do with a Windows reinstallation - restoring to OEM defaults
+If you have a wired keyboard, you can press:
+- F2 (Setup)
+- F12 (One time boot menu)
+
+> ![NOTE]
+> Provided bluetooth keyboard Type-C port is for power only. you cannot use it for data. Must use a Bluetooth connection. Bluetooth is not supported when powered on
+
+# Notable features
+
+- User Presence sensing exists. You can [read more here](https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/sensors-presence-sensing)
+- All Yoga Book 9i software features can be controlled via User Center. You can read the list of features [here](https://download.lenovo.com/pccbbs/pubs/yogabook_9_13imu9/user_guide/en/help-center-user-center-app.html)
+
+# Power on
+
+- You can have the laptop turn on the moment you open the lid. This is enabled by default, but you can toggle via Lenovo Vantage or in the UEFI Setup
+- Touch is supported until you reach an OS that does not share the same support (Windows Boot Manager Menu, Limine, GRUB, etc.)
+
+# If you choose to reinstall Windows via an official ISO
 
 - All drivers can be installed in tandem through SDIO, Windows Update, and Lenovo Vantage
 - Pen targets the opposite screen however. Tried using the drivers provided in the OEM install without luck. could be me using SDIO first, not sure.
 - Installing User Center will restore full software experience
 
-To-do for Linux support
+# Linux support
 
-I will be testing a Live ISO first. for full testing, I will install a Linux distribution that frequently updates the Linux kernel. This is a high requirement as this is incomplete for support. Improvements will happen throughout time
+This is not a guide. This simply lists what works and what limitations exist out of the box. I will provide resources for working features when possible or if requested. If you own a Gen8, Gen9, or Gen10 device and you have additional information or a discrepency, please open an issue with your findings.
+
+## What distribution should I use?
+
+This is a blanket statement I put on any device out there. If there are device parity limitations, then my recommendation will always be any distribution that allows for a rolling release (Fedora and Arch to name base distributions).
+
+I do not test Debian installs. Especially those that use an older kernel.
+
+Tge lowest kernel install I have tested is 6.14. I will continue to update device parity as newer kernel releases come out. If and when there is full device parity, then I will mark a base kernel to recommend.
+
+TDLR: Anything that allows the latest kernel is recommended. The rest of what you're looking for in a distribution is up to you.
+
+## How I test
+
+I test with a Live ISO first. for full testing, I will install a Linux distribution that frequently updates the Linux kernel. This is a high requirement as this is incomplete for support. Improvements will happen throughout time.
+
+## What works
 
 ### Faical Recognition
 
@@ -28,57 +59,109 @@ The IR Camera works with [howdy](https://github.com/boltgolt/howdy). Fedora-base
 
 The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
 
-- Camera support
-   - Works
+### Speakers
+
+- Kernel <6.15 speakers will not work
+- Kernel 6.15.X: There is no speaker bass
+- Kernel 6.16+: Bass speakers work, but are stuck at 100%. Rest of the speakers can be controlled
+
+What needs to be tested: Check PCM and see if a softmixer can work around this
+
+### Variable refresh rate
+
+If you use Plasma 6+, you can use Adaptive Sync.
+
+### Screen brightness
+
+Technically, the top screen will only work out of the box. As this is an OLED screen, using a "fake" brightness such as redshift.
+
+Plasma 6+ HDR can take advantage of this. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a highee color range.
+
+### HDR
+
+This is heavily dependent on what desktop environment or window manager you choose to use. If you already have a device or monitor that already supports HDR on Linux, then chances are it will likely work on the Yoga Book 9i as well.
+
+### Start-Stop charging
+
+It appears that Yoga devices only support a hard set range of 75% (start) - 80% (stop). Please be mindful of this if you are coming from a device that let you configure this.
+
+This is also applicable to Windows via Vantage.
+
+### Intel graphics (Mesa)
+
+Works fine on Wayland sessions. I could never enter in an X11 session via GNOME or KDE. My recommendation anyways is to consider using Wayland for laptops.
+
+I do not intend to look further into X11.
+
+### Using a Thunderbolt 3/4 dock, USB4 dock
+
+Works as intended. Tested using Lenovo Thinkpad Universal Thunderbolt 4 Docking Station, various hubs, and an older Dell WD15 thunderbolt 3 dock
+
+Thinkpad docking station power button will work. Haven't 100% tested on Linux despite confirming on Windows. I expect this should work just fine. While not as needed as a traditional Thinkpad with a power button on the keyboard deck, it can be potentially mote convenient depending where you have the Yoga Book 9i docked
+
+## Others without comment
+- Camera
 - Microphone support
-   - Works
-- Speaker support
-   - Needs Kernel 6.15+, but speaker bass is not enabled due to a bug
-   - Update kernel 6.16+: Bass speakers will work, but are stuck at 100%. This is at least an improvement as this could be now tweaked by a soft mixer temporarily
-- "Tablet mode"
-   - Not detected as is. Possible getting around as when you arent in a laptop orientation, there is indication that a "touchpad" is turned off
-- "Software experience" missing
-- Maximum finger support (test with libinput debug gui)
-    - Cant fully test. top screen seems to detect my fingers but not all 10. Bottom can intermittiently detect one finger, but it can be considered non existent in real world use case
-- function key support
-   - For universal keys, works just fine. As anticipated, none of the lenovo special keys can be used ir bound to KDE shortcuts out of the box
-- copilot key
-   - Technically bindable. i never can get it to work well on KDE shortcuts on any of my copilot key supported devices anyway
-- keyboard brightness
-   - Cannot configure in Plasma. Must use built in function
-- Screen brightness
-    - Top screen can be adjusted as is. Bottom is set to maximum brightness. This can be adjusted through redshift likely. ive found turning on KDE HDR then lets you adjust both screen brightness individually, so you basically get best of both worlds with HDR contrast and brightness functionality.
-- HDR support
-   - Supported on both screens
-- Adaptive sync support
-   - KDE feature. Supported
-- default scaling on KDE vs Windows
+- Adaptive Sync/Variabl
+- Wi-Fi
+- Bluetooth
+- Suspend/Sleep
+- Power off
+ 
+## Not working
+
+### Tablet mode
+
+Not detected as is. Possible getting around as when you arent in a laptop orientation, there is indication that a "touchpad" is turned off
+
+### User Center software experience
+
+Lenovo does not make a User Center application that works with Linux. This is expected as this has never been advertised as such. I'm only reporting this here to save people from asking.
+
+### Maximum finger support
+
+Partially tested with Libinpurt Debug GUI
+
+Cant fully test. top screen seems to detect my fingers but not all 10. Bottom can intermittiently detect one finger, but it can be considered non existent in real world use case
+
+### Function key support
+
+For universal keys, works just fine. As anticipated, none of the lenovo special keys can be used or bound to KDE shortcuts out of the box
+
+### Detecting physical keyboard attached on bottom display
+
+Libinput does not detect this. This might change if the bottom screen has full touch support. I will revisit this only when the bottom screen has full multi touch support.
+
+If you're wanting to simply turn off the bottom display, you can change the state of either display as you please with manual scripts. I will look into providing some if requested via an Issue.
+
+### Copilot key
+
+While technically bindable, I will mark this as not working fully as I can never get this to bind on any of my Copilot key devices
+
+### External keyboard brightness
+
+Cannot configure in Plasma. Must use built in function
+
+### Automatic rotation
+
+Seems to work on the top screen. however since screen orientation is flipped, this isnt ideal. I would not advise enabling it
+
+### Proximity sensor/user presence sensing
+
+Not supported. I am unsure if this is supported on any User Presence Sensing device anyways.
+
+## Untested
+
+- Ambient light sensor
+- Power profiles
+  - Plasma does provide a slider via Power Profiles Daemon. However, I haven't entirely tested the behavior
+- Secure boot
+  - Didnt exactly let me enroll any keys in Ventoy despite enabling 3rd party CAs in the UEFI
+
+## Other notes
+- Default scaling on Plasma 6.3+ vs Windows
    - Windows is 200% as with most 2800x1800 and 2560x1600 14-16" displays
    - KDE 6.3+ will default to 160% scaling on both displays
-- Start-Stop charging support
-   - Tested on Kernel 6.14 - a toggle exists. No option to configure further is present. 
-- WiFi and Bluetooth support
-    - Both are supported out of the box
-- Intel graphics via Mesa
-    - Seems to work. I cannot seem to get a Plasma X11 session. Plasma Wayland seems to work fine as Wayland for these devices should be used anyways
-- detecting physical keyboard and turning off display
-    - Not detectable
-- "merging the two screens together" support
-    - This isnt a real thing anyways. this is just software in Windows that makes a window overflow the top taskbar and into the second acreen. could be possible with some software tweaks
-- Suspend/sleep
-    - Works
-- Power profiles (wattage and fan speeds)
-    - There is a slider in Plasma. whether they actually work I have not tested
-- Variable refresh rate
-    - As with other Windows laptops, this is not present in Linux. I expect this to remain until there is similar support with other Windows laptops
-- Automatic rotation
-    - Seems to work on the top screen. however since screen orientation is flipped, this isnt ideal. i wouldnt enable it
-- Secure Boot support
-    - Didnt exactly let me enroll any keys in Ventoy despite enabling 3rd party CAs in the UEFI
-- Using a Thunderbolt 3/4 dock, USB4 dock
-    - Works as intended. Tested using Lenovo Thinkpad Universal Thunderbolt 4 Docking Station, various hubs, and an older Dell WD15 thunderbolt 3 dock
-    - Thinkpad docking station power button will work. Haven't 100% tested on Linux despite confirming on Windows. I expect this should work just fine. While not as needed as a traditional Thinkpad with a power button on the keyboard deck, it can be potentially mote convenient depending where you have the Yoga Book 9i docked
-- Ambient brightness sensor support
 - Default screen
     - Top screen is the default
 
