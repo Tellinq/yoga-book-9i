@@ -14,7 +14,7 @@ If you have a wired keyboard, you can press:
 - F2 (Setup)
 - F12 (One time boot menu)
 
-> ![NOTE]
+> [!NOTE]
 > Provided bluetooth keyboard Type-C port is for power only. you cannot use it for data. Must use a Bluetooth connection. Bluetooth is not supported when powered on
 
 # Notable features
