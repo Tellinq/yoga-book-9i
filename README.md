@@ -73,7 +73,7 @@ If you use Plasma 6+, you can use Adaptive Sync.
 
 ### Screen brightness
 
-Technically, the top screen will only work out of the box. As this is an OLED screen, using a "fake" brightness such as redshift.
+Technically, the bottom screen will only work out of the box. As this is an OLED screen, using a "fake" brightness such as redshift.
 
 Plasma 6+ HDR can take advantage of this. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a highee color range.
 
