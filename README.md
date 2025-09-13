@@ -114,6 +114,8 @@ Thinkpad docking station power button will work. Haven't 100% tested on Linux de
 
 Not detected as is. Possible getting around as when you arent in a laptop orientation, there is indication that a "touchpad" is turned off
 
+I am currently finding a way to manually override this as the hinge sebsor is exposed and can be used to determine what angle warrants tablet mode.
+
 ### User Center software experience
 
 Lenovo does not make a User Center application that works with Linux. This is expected as this has never been advertised as such. I'm only reporting this here to save people from asking.
@@ -144,7 +146,10 @@ Cannot configure in Plasma. Must use built in function
 
 ### Automatic rotation
 
-Seems to work on the top screen. however since screen orientation is flipped, this isnt ideal. I would not advise enabling it
+Requires iio-sensors-proxy.
+If you use KDE Plasma, the top screen will work with automatic rotation so long as "Only in tablet mode" is disabled. Keep in mind with this the screen orientation is offset by 180 degrees.
+
+It is possible to make a script to handle both screens. the hinge and insividual screen gyro sensors are exposed and can be used. I will be releasing a script for Plasma, which can be adapted for other window managers and desktop environments accordingly.
 
 ### Proximity sensor/user presence sensing
 
@@ -152,7 +157,7 @@ Not supported. I am unsure if this is supported on any User Presence Sensing dev
 
 ## Untested
 
-- Ambient light sensor
+- Ambient light sensor - this is exposed. Needs configuration.
 - Power profiles
   - Plasma does provide a slider via Power Profiles Daemon. However, I haven't entirely tested the behavior
 - Secure boot
