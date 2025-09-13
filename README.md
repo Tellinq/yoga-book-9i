@@ -149,17 +149,33 @@ Cannot configure in Plasma. Must use built in function
 Requires iio-sensors-proxy.
 If you use KDE Plasma, the top screen will work with automatic rotation so long as "Only in tablet mode" is disabled. Keep in mind with this the screen orientation is offset by 180 degrees.
 
-It is possible to make a script to handle both screens. the hinge and insividual screen gyro sensors are exposed and can be used. I will be releasing a script for Plasma, which can be adapted for other window managers and desktop environments accordingly.
+It is possible to make a script to handle both screens. the hinge and insividual screen accel/gyro sensors are exposed and can be used. I will be releasing a script for Plasma, which can be adapted for other window managers and desktop environments accordingly.
 
 ### Proximity sensor/user presence sensing
 
-Not supported. I am unsure if this is supported on any User Presence Sensing device anyways.
+Requires iio-sensors-proxy
+
+Currently not detected by iio-sensors-proxy. Requires manual configuration.
+
+I don't see desktop environments or window managers taking advantage of this, given how few devices include proximity sensors.
+
+What works:
+- If someone is nearby (yes or no). I have also found this to also be determined if you look at the display specifically
+- Distance ranging from 0-10000, not sure what metric this is on
+- Attention detection (a separate sensor that will flip from 0 (not looking at the display) and 100 (looking at thr screen). I find this to be unreliable, but it does povide results
+
+With all that said, this is enough data we can grab to make a script that handles multiple actions (such as adjusting screen brightness, toggling the display on/off, locking the screen, pausing media)
+
+I have a script in the works that adapts to KDE Plasma screen brightness. My main objective is to start a "not in focus" timer IF the user is also idle as the sensor can be convinced you are away even if you are using the device. This is also true for Windows but they seem to have and check if you are idle for a few seconds before actually starting the away timer
+
+### Ambient Light Sensor
+
+This is exposed. Seems to be stuck at a value of 120. I cannot seem to configure this.
 
 ## Untested
 
-- Ambient light sensor - this is exposed. Needs configuration.
 - Power profiles
-  - Plasma does provide a slider via Power Profiles Daemon. However, I haven't entirely tested the behavior
+  - Plasma does provide a slider via Power Profiles Daemon. However, I haven't entirely tested the behavior. These have the possibility of not working.
 - Secure boot
   - Didnt exactly let me enroll any keys in Ventoy despite enabling 3rd party CAs in the UEFI
 
