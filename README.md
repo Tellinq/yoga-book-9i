@@ -120,6 +120,43 @@ I am currently finding a way to manually override this as the hinge sebsor is ex
 
 Lenovo does not make a User Center application that works with Linux. This is expected as this has never been advertised as such. I'm only reporting this here to save people from asking.
 
+Here is a list of features User Center does provide. This will be updated as more features are added, as well as if viable alteratives appear.
+
+#### Virtual Keyboard
+
+__Activation__
+- Tap an input box
+- Tap with 8 fingers on the lower screen
+- Tray shortcut
+
+__Display focus window when full size keyboard is on the lower screen__
+
+- Move the active window to the upper screen
+- Move focus window to top of full size keyboard on lower screen
+- Display of focus window on waterfall screen
+
+__Size options__
+- Full screen (keyboard and trackpad)
+- Full bottom half
+- Large (movable and resizable)
+- Small (movable and resizable)
+
+Will not activate if the tablet mode is activated or screens are duplicated
+
+#### Virtual Touchpad
+
+__Size options__
+- Fullscreen (alongside full screen keyboard)
+- Resizable mode
+
+__Features__
+- Optional dedicated trackpad buttons
+- Vibrate/haptic feedback when clicked
+
+__Activation__
+- Tap with 3 fingers
+- Tray shortcut
+
 ### Maximum finger support
 
 Partially tested with Libinpurt Debug GUI
