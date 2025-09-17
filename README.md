@@ -43,7 +43,7 @@ This is a blanket statement I put on any device out there. If there are device p
 
 I do not test Debian installs. Especially those that use an older kernel.
 
-Tge lowest kernel install I have tested is 6.14. I will continue to update device parity as newer kernel releases come out. If and when there is full device parity, then I will mark a base kernel to recommend.
+The lowest kernel install I have tested is 6.14. I will continue to update device parity as newer kernel releases come out. If and when there is full device parity, then I will mark a base kernel to recommend.
 
 TDLR: Anything that allows the latest kernel is recommended. The rest of what you're looking for in a distribution is up to you.
 
@@ -97,7 +97,7 @@ I do not intend to look further into X11.
 
 Works as intended. Tested using Lenovo Thinkpad Universal Thunderbolt 4 Docking Station, various hubs, and an older Dell WD15 thunderbolt 3 dock
 
-Thinkpad docking station power button will work. Haven't 100% tested on Linux despite confirming on Windows. I expect this should work just fine. While not as needed as a traditional Thinkpad with a power button on the keyboard deck, it can be potentially mote convenient depending where you have the Yoga Book 9i docked
+Thinkpad docking station power button will work. Haven't 100% tested on Linux despite confirming on Windows. I expect this should work just fine. While not as needed as a traditional Thinkpad with a power button on the keyboard deck, it can be potentially more convenient depending where you have the Yoga Book 9i docked
 
 ## Others without comment
 - Camera
@@ -114,7 +114,7 @@ Thinkpad docking station power button will work. Haven't 100% tested on Linux de
 
 Not detected as is. Possible getting around as when you arent in a laptop orientation, there is indication that a "touchpad" is turned off
 
-I am currently finding a way to manually override this as the hinge sebsor is exposed and can be used to determine what angle warrants tablet mode.
+I am currently finding a way to manually override this as the hinge sensor is exposed and can be used to determine what angle warrants tablet mode.
 
 ### User Center software experience
 
