@@ -63,19 +63,19 @@ The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
 
 - Kernel <6.15 speakers will not work
 - Kernel 6.15.X: There is no speaker bass
-- Kernel 6.16+: Bass speakers work, but are stuck at 100%. Rest of the speakers can be controlled
+- Kernel 6.16+: Bass speakers work, but are controlled separately. You can set up a listening script to sync the Bass Speaker with the Speaker volume when your volume changes.
 
 What needs to be tested: Check PCM and see if a softmixer can work around this
 
-### Variable refresh rate
+### Variable/Dynamic Refresh Rate/Adaptive Sync
 
-If you use Plasma 6+, you can use Adaptive Sync.
+Supported depending on your desktop environment or Window Manager.
 
 ### Screen brightness
 
 Technically, the bottom screen will only work out of the box. As this is an OLED screen, using a "fake" brightness such as redshift.
 
-Plasma 6+ HDR can take advantage of this. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a highee color range.
+Plasma 6+ HDR and GNOME HDR can take advantage of this. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a highee color range.
 
 ### HDR
 
@@ -95,14 +95,13 @@ I do not intend to look further into X11.
 
 ### Using a Thunderbolt 3/4 dock, USB4 dock
 
-Works as intended. Tested using Lenovo Thinkpad Universal Thunderbolt 4 Docking Station, various hubs, and an older Dell WD15 thunderbolt 3 dock
+Works as intended. Tested using Lenovo Thinkpad Universal Thunderbolt 4 Docking Station, various hubs, and an older Dell WD15 Thunderbolt 3 dock
 
 Thinkpad docking station power button will work. Haven't 100% tested on Linux despite confirming on Windows. I expect this should work just fine. While not as needed as a traditional Thinkpad with a power button on the keyboard deck, it can be potentially more convenient depending where you have the Yoga Book 9i docked
 
 ## Others without comment
 - Camera
 - Microphone support
-- Adaptive Sync/Variabl
 - Wi-Fi
 - Bluetooth
 - Suspend/Sleep
@@ -149,7 +148,7 @@ Cannot configure in Plasma. Must use built in function
 Requires iio-sensors-proxy.
 If you use KDE Plasma, the top screen will work with automatic rotation so long as "Only in tablet mode" is disabled. Keep in mind with this the screen orientation is offset by 180 degrees.
 
-It is possible to make a script to handle both screens. the hinge and insividual screen accel/gyro sensors are exposed and can be used. I will be releasing a script for Plasma, which can be adapted for other window managers and desktop environments accordingly.
+It is possible to make a script to handle both screens. the hinge and individual screen accel/gyro sensors are exposed and can be used. I will be releasing a script for Plasma, which can be adapted for other window managers and desktop environments accordingly.
 
 ### Proximity sensor/user presence sensing
 
