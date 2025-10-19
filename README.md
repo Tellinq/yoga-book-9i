@@ -49,7 +49,7 @@ TDLR: Anything that allows the latest kernel is recommended. The rest of what yo
 
 ## How I test
 
-I test with a Live ISO first. for full testing, I will install a Linux distribution that frequently updates the Linux kernel. This is a high requirement as this is incomplete for support. Improvements will happen throughout time.
+I test with a Live ISO first. For full testing, I will install a Linux distribution that frequently updates the Linux kernel. This is a high requirement as this is incomplete for support. Improvements will happen throughout time.
 
 ## What works
 
@@ -73,7 +73,7 @@ Supported depending on your desktop environment or Window Manager.
 
 ### Screen brightness
 
-Technically, the bottom screen will only work out of the box. As this is an OLED screen, using a "fake" brightness such as redshift.
+Technically, the bottom screen will only work out of the box. As this is an OLED screen, using a "fake" brightness such as redshift will get the job done.
 
 Plasma 6+ HDR and GNOME HDR can take advantage of this. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a highee color range.
 
