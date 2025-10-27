@@ -99,6 +99,11 @@ Works as intended. Tested using Lenovo Thinkpad Universal Thunderbolt 4 Docking 
 
 Thinkpad docking station power button will work. Haven't 100% tested on Linux despite confirming on Windows. I expect this should work just fine. While not as needed as a traditional Thinkpad with a power button on the keyboard deck, it can be potentially more convenient depending where you have the Yoga Book 9i docked
 
+### Secure Boot
+
+Enable third party CAs. You can enroll keys via sbctl.
+Note that enabling Setup Mode disables Secure Boot until you manually re-enable yourself in UEFI. User Mode will turn back on once enrolling is complete.
+
 ## Others without comment
 - Camera
 - Microphone support
@@ -175,8 +180,6 @@ This is exposed. Seems to be stuck at a value of 120. I cannot seem to configure
 
 - Power profiles
   - Plasma does provide a slider via Power Profiles Daemon. However, I haven't entirely tested the behavior. These have the possibility of not working.
-- Secure boot
-  - Didnt exactly let me enroll any keys in Ventoy despite enabling 3rd party CAs in the UEFI
 
 ## Other notes
 - Default scaling on Plasma 6.3+ vs Windows
