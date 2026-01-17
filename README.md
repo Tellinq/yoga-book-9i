@@ -75,7 +75,11 @@ Supported depending on your desktop environment or Window Manager.
 
 Technically, the bottom screen will only work out of the box. As this is an OLED screen, using a "fake" brightness such as redshift will get the job done.
 
-Plasma 6+ HDR and GNOME HDR can take advantage of this. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a highee color range.
+However, you can get this working via the necessary kenrel parameters listed https://github.com/blhoward2/yogabook_patches
+
+However, The top screen brightness affects both displays.
+
+Alternatively, Plasma 6+ HDR and GNOME HDR can take advantage of fake brughtness. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a higher color range.
 
 ### HDR
 
@@ -89,9 +93,7 @@ This is also applicable to Windows via Vantage.
 
 ### Intel graphics (Mesa)
 
-Works fine on Wayland sessions. I could never enter in an X11 session via GNOME or KDE. My recommendation anyways is to consider using Wayland for laptops.
-
-I do not intend to look further into X11.
+Works fine on Wayland sessions out of the box. However, for X11 sessions, see https://github.com/blhoward2/yogabook_patches to apply the kernel parameters that force Xe graphics.
 
 ### Using a Thunderbolt 3/4 dock, USB4 dock
 
@@ -103,6 +105,16 @@ Thinkpad docking station power button will work. Haven't 100% tested on Linux de
 
 Enable third party CAs. You can enroll keys via sbctl.
 Note that enabling Setup Mode disables Secure Boot until you manually re-enable yourself in UEFI. User Mode will turn back on once enrolling is complete.
+
+# Touchscreens
+
+See https://github.com/blhoward2/yogabook_patches for applying a patched kernel. Do note, once you remove your fingers from the bottom touchscreen, the screens and stylus will disconnect and reconnect. This can cause a visual stutter.
+
+Note that Window Managers and desktop environments may not support individually mapping to specific outputs on multiple touchscreens/stylus.
+
+Turning off the bottom screen will not keep touch support enabled, unlike on Windows where you can double tap to re-enable the bottom screen.
+
+I could not test maximum finger support yet as my Libinput install broke. Four fingers is the maximum I have tested. However, 10 is the goal.
 
 ## Others without comment
 - Camera
@@ -123,12 +135,6 @@ I am currently finding a way to manually override this as the hinge sensor is ex
 ### User Center software experience
 
 Lenovo does not make a User Center application that works with Linux. This is expected as this has never been advertised as such. I'm only reporting this here to save people from asking.
-
-### Maximum finger support
-
-Partially tested with Libinpurt Debug GUI
-
-Cant fully test. top screen seems to detect my fingers but not all 10. Bottom can intermittiently detect one finger, but it can be considered non existent in real world use case
 
 ### Function key support
 
