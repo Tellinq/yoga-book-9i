@@ -114,7 +114,9 @@ Note that Window Managers and desktop environments may not support individually 
 
 Turning off the bottom screen will not keep touch support enabled, unlike on Windows where you can double tap to re-enable the bottom screen.
 
-I could not test maximum finger support yet as my Libinput install broke. Four fingers is the maximum I have tested. However, 10 is the goal.
+So far, a maximum of 5 fingers can be used at once. If you attempt to use both screens at the same time, the inputs will go back and forth uncontrollably.
+
+10 fingers on both screens is the current goal.
 
 ## Others without comment
 - Camera
