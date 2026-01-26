@@ -188,6 +188,7 @@ This is exposed. Seems to be stuck at a value of 120. I cannot seem to configure
 
 - Power profiles
   - Plasma does provide a slider via Power Profiles Daemon. However, I haven't entirely tested the behavior. These have the possibility of not working.
+- Haptics
 
 ## Other notes
 - Default scaling on Plasma 6.3+ vs Windows
