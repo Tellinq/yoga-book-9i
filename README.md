@@ -77,7 +77,7 @@ Technically, the bottom screen will only work out of the box. As this is an OLED
 
 However, you can get this working via the necessary kenrel parameters listed https://github.com/blhoward2/yogabook_patches
 
-However, The top screen brightness affects both displays.
+If you choose to use KDE witu this patch, The top screen brightness affects both displays. You can individually control the intel_backlight via scripts. For exampls, DMS can let you select an independent monitor device to control the backlight independently.
 
 Alternatively, Plasma 6+ HDR and GNOME HDR can take advantage of fake brughtness. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a higher color range.
 
