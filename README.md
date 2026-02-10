@@ -182,7 +182,7 @@ I have a script in the works that adapts to KDE Plasma screen brightness. My mai
 
 ### Ambient Light Sensor
 
-This is exposed. Seems to be stuck at a value of 120. I cannot seem to configure this.
+This seems to be working as of Kernel 6.18.5. This used to give me a stuck value of 120. Unsure of when this started working or why.
 
 ## Untested
 
