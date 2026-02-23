@@ -15,7 +15,7 @@ If you have a wired keyboard, you can press:
 - F12 (One time boot menu)
 
 > [!NOTE]
-> Provided bluetooth keyboard Type-C port is for power only. you cannot use it for data. Must use a Bluetooth connection. Bluetooth is not supported when powered on
+> Provided bluetooth keyboard Type-C port is for power only. you cannot use it for data. Must use a Bluetooth connection. Bluetooth is not supported when powered on.
 
 # Notable features
 
@@ -39,13 +39,14 @@ This is not a guide. This simply lists what works and what limitations exist out
 
 ## What distribution should I use?
 
-This is a blanket statement I put on any device out there. If there are device parity limitations, then my recommendation will always be any distribution that allows for a rolling release (Fedora and Arch to name base distributions).
+This should not matter (mostly). What will matter is future kernel updates. So far, 6.18 LTS is in a state where a majority are working either out of the box, or with configuration. Please note, this laptop does require a large amount of configuration to make this usable.
 
-I do not test Debian installs. Especially those that use an older kernel.
+Here's my general set of recommendations:
 
-The lowest kernel install I have tested is 6.14. I will continue to update device parity as newer kernel releases come out. If and when there is full device parity, then I will mark a base kernel to recommend.
+Bare minimum: Distribution with kernel 6.16+. This includes fixes for the speakers.
+Recommendation: Distribution with kernel 6.18 LTS or newer. Once [Kernel.org bug 220386](https://bugzilla.kernel.org/show_bug.cgi?id=220386) is fixed in the kernel, my baseline recommendation will change.
 
-TDLR: Anything that allows the latest kernel is recommended. The rest of what you're looking for in a distribution is up to you.
+The rest of what you're looking for in a distribution is up to you.
 
 ## How I test
 
@@ -57,15 +58,15 @@ I test with a Live ISO first. For full testing, I will install a Linux distribut
 
 The IR Camera works with [howdy](https://github.com/boltgolt/howdy). Fedora-based distribution users can install [howdy-beta](https://copr.fedorainfracloud.org/coprs/principis/howdy-beta/) with Copr.
 
-The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
+> [!NOTE]
+> The `device_path` in `/etc/howdy/config.ini` needs to be set to `/dev/video2`.
 
 ### Speakers
 
-- Kernel <6.15 speakers will not work
-- Kernel 6.15.X: There is no speaker bass
-- Kernel 6.16+: Bass speakers work, but are controlled separately. You can set up a listening script to sync the Bass Speaker with the Speaker volume when your volume changes.
+> [!NOTE]
+> For best experience: Use Kernel 6.16+
 
-What needs to be tested: Check PCM and see if a softmixer can work around this
+You will need a listening script that can sync the bass speakers. Alternative, you can individually adjust the bass speakers.
 
 ### Variable/Dynamic Refresh Rate/Adaptive Sync
 
@@ -77,13 +78,22 @@ Technically, the bottom screen will only work out of the box. As this is an OLED
 
 However, you can get this working via the necessary kenrel parameters listed https://github.com/blhoward2/yogabook_patches
 
-If you choose to use KDE witu this patch, The top screen brightness affects both displays. You can individually control the intel_backlight via scripts. For exampls, DMS can let you select an independent monitor device to control the backlight independently.
+If you choose to use KDE with this patch, The top screen brightness affects both displays. You can individually control the intel_backlight via scripts. For exampls, DMS can let you select an independent monitor device to control the backlight independently.
 
-Alternatively, Plasma 6+ HDR and GNOME HDR can take advantage of fake brughtness. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a higher color range.
+Alternatively, Plasma 6+ HDR and GNOME HDR can take advantage of fake brightness. By enabling HDR, you can get the best of both worlds by being able to adjust screen brightness and a higher color range.
 
 ### HDR
 
 This is heavily dependent on what desktop environment or window manager you choose to use. If you already have a device or monitor that already supports HDR on Linux, then chances are it will likely work on the Yoga Book 9i as well.
+
+### Automatic rotation
+
+> [!NOTE]
+> Requires `iio-sensors-proxy`
+
+If you use KDE Plasma, the top screen will work with automatic rotation so long as "Only in tablet mode" is disabled. Keep in mind with this the screen orientation is offset by 180 degrees.
+
+It is possible to make a script to handle both screens. the hinge and individual screen accel/gyro sensors are exposed and can be used. I will be releasing a script for Plasma, which can be adapted for other window managers and desktop environments accordingly.
 
 ### Start-Stop charging
 
@@ -97,9 +107,17 @@ Works fine on Wayland sessions out of the box. However, for X11 sessions, see ht
 
 ### Using a Thunderbolt 3/4 dock, USB4 dock
 
-Works as intended. Tested using Lenovo Thinkpad Universal Thunderbolt 4 Docking Station, various hubs, and an older Dell WD15 Thunderbolt 3 dock
+Works as intended. 
 
-Thinkpad docking station power button will work. Haven't 100% tested on Linux despite confirming on Windows. I expect this should work just fine. While not as needed as a traditional Thinkpad with a power button on the keyboard deck, it can be potentially more convenient depending where you have the Yoga Book 9i docked
+Tested using:
+- Lenovo Thinkpad Universal Thunderbolt 3 Docking Station
+- Lenovo Thinkpad Universal Thunderbolt 4 Docking Station
+- Lenovo Thinkpad Universal Thunderbolt 4 Smart Dock
+- Dell WD15 Thunderbolt 3 Docking Station
+- MOKIN MOUC1705
+- Hagibis Pro MC100
+
+Docking stations that support Lenovo Thinkpad Power Buttons will work.
 
 ### Secure Boot
 
@@ -117,6 +135,60 @@ Turning off the bottom screen will not keep touch support enabled, unlike on Win
 So far, a maximum of 5 fingers can be used at once. If you attempt to use both screens at the same time, the inputs will go back and forth uncontrollably.
 
 10 fingers on both screens is the current goal.
+
+### Function/Nonstandard key support
+
+The following works:
+
+- Volume Mute
+- Volume Up/Down
+- Brightness up/down
+- External display settings: Binds to `Left Meta + P`
+- Settings: Binds to `Left Meta + I`
+- Lock Screen: Binds to `Left Meta + L`
+- Screenshot: Binds to `Left Meta + Left Shift + S`
+- Copilot key: Defaults to `Left Meta + Left Shift + XF86TouchpadOff` (Libinput will show as `Left Meta + Left Shift + F23`).
+    - This will not behave like a modifier key. For example, trying to use `Left Meta + Left Shift + XF86TouchpadOff + L` will not work (tested on Niri). It might be possible to work around this, but I have not attempted.
+    - You can can remap using [Input Remapper](https://github.com/sezanzeb/input-remapper).
+    - I have not had much luck with getting this to work on Plasma 6.
+
+The following are not recognized:
+
+- Touchpad toggle
+- Night mode
+- Music profile cycle
+- Customizable Lenovo key
+- Open collaboration app
+- Open User Center app
+- Open AI Experience
+
+### Proximity sensor/user presence sensing
+
+> [!NOTE]
+> Requires `iio-sensors-proxy`
+
+Currently not detected by iio-sensors-proxy. Requires manual configuration.
+
+I don't see desktop environments or window managers taking advantage of this, given how few devices include proximity sensors.
+
+What works:
+- If someone is nearby (yes or no). I have also found this to also be determined if you look at the display specifically
+- Distance ranging from 0-10000, not sure what metric this is on
+- Attention detection (a separate sensor that will flip from 0 (not looking at the display) and 100 (looking at the screen). I find this to be unreliable, but it does povide results
+
+With all that said, this is enough data we can grab to make a script that handles multiple actions (such as adjusting screen brightness, toggling the display on/off, locking the screen, pausing media)
+
+I have a script in the works that adapts to KDE Plasma screen brightness. My main objective is to start a "not in focus" timer IF the user is also idle as the sensor can be convinced you are away even if you are using the device. This is also true for Windows but they seem to have and check if you are idle for a few seconds before actually starting the away timer
+
+### Ambient Light Sensor
+
+Requires iio-sensors-proxy
+
+Works if your window manager or desktop environment supports it. Research how you can use it on your desktop environment.
+
+### External keyboard brightness
+
+This cannot be configured with software yet. You can however turn it on/off/auto using `FN + Space`
 
 ## Others without comment
 - Camera
@@ -138,63 +210,16 @@ I am currently finding a way to manually override this as the hinge sensor is ex
 
 Lenovo does not make a User Center application that works with Linux. This is expected as this has never been advertised as such. I'm only reporting this here to save people from asking.
 
-### Function key support
-
-For universal keys, works just fine. As anticipated, none of the lenovo special keys can be used or bound to KDE shortcuts out of the box
-
 ### Detecting physical keyboard attached on bottom display
 
 Libinput does not detect this. This might change if the bottom screen has full touch support. I will revisit this only when the bottom screen has full multi touch support.
 
 If you're wanting to simply turn off the bottom display, you can change the state of either display as you please with manual scripts. I will look into providing some if requested via an Issue.
 
-### Copilot key
-
-While technically bindable, I will mark this as not working fully as I can never get this to bind on any of my Copilot key devices
-
-### External keyboard brightness
-
-Cannot configure in Plasma. Must use built in function
-
-### Automatic rotation
-
-Requires iio-sensors-proxy.
-If you use KDE Plasma, the top screen will work with automatic rotation so long as "Only in tablet mode" is disabled. Keep in mind with this the screen orientation is offset by 180 degrees.
-
-It is possible to make a script to handle both screens. the hinge and individual screen accel/gyro sensors are exposed and can be used. I will be releasing a script for Plasma, which can be adapted for other window managers and desktop environments accordingly.
-
-### Proximity sensor/user presence sensing
-
-Requires iio-sensors-proxy
-
-Currently not detected by iio-sensors-proxy. Requires manual configuration.
-
-I don't see desktop environments or window managers taking advantage of this, given how few devices include proximity sensors.
-
-What works:
-- If someone is nearby (yes or no). I have also found this to also be determined if you look at the display specifically
-- Distance ranging from 0-10000, not sure what metric this is on
-- Attention detection (a separate sensor that will flip from 0 (not looking at the display) and 100 (looking at thr screen). I find this to be unreliable, but it does povide results
-
-With all that said, this is enough data we can grab to make a script that handles multiple actions (such as adjusting screen brightness, toggling the display on/off, locking the screen, pausing media)
-
-I have a script in the works that adapts to KDE Plasma screen brightness. My main objective is to start a "not in focus" timer IF the user is also idle as the sensor can be convinced you are away even if you are using the device. This is also true for Windows but they seem to have and check if you are idle for a few seconds before actually starting the away timer
-
-### Ambient Light Sensor
-
-This seems to be working as of Kernel 6.18.5. This used to give me a stuck value of 120. Unsure of when this started working or why.
-
 ## Untested
 
 - Power profiles
   - Plasma does provide a slider via Power Profiles Daemon. However, I haven't entirely tested the behavior. These have the possibility of not working.
 - Haptics
-
-## Other notes
-- Default scaling on Plasma 6.3+ vs Windows
-   - Windows is 200% as with most 2800x1800 and 2560x1600 14-16" displays
-   - KDE 6.3+ will default to 160% scaling on both displays
-- Default screen
-    - Top screen is the default
 
 
