@@ -152,6 +152,12 @@ The following works:
     - You can can remap using [Input Remapper](https://github.com/sezanzeb/input-remapper).
     - I have not had much luck with getting this to work on Plasma 6.
 
+Using Lenovo's bluetooth leyboard specifically also forcefully has additional Function bindings:
+
+- FN + Q: Cycle System Performance Mode (does not do anything like the dedicated key)
+- FN + R: Cycle refresh rates (does not actually do anything)
+- FN + T: Binds to `Printscreen`
+
 The following are not recognized:
 
 - Touchpad toggle
@@ -161,6 +167,7 @@ The following are not recognized:
 - Open collaboration app
 - Open User Center app
 - Open AI Experience
+- Cycle System Performance Modes
 
 ### Proximity sensor/user presence sensing
 
@@ -182,13 +189,28 @@ I have a script in the works that adapts to KDE Plasma screen brightness. My mai
 
 ### Ambient Light Sensor
 
-Requires iio-sensors-proxy
+> [!NOTE]
+> Requires `iio-sensors-proxy`
 
 Works if your window manager or desktop environment supports it. Research how you can use it on your desktop environment.
+
+> [!WARNING]
+> Most of the time I cannot get this to work. I did have a one off chance where I managed to get this to work. I'm not sure what triggered this. However, if yours is not stuck at 120 lux, you can use this as intended.
 
 ### External keyboard brightness
 
 This cannot be configured with software yet. You can however turn it on/off/auto using `FN + Space`
+
+### Power Profiles
+
+> [!NOTE]
+> Requires `power-profiles-daemon`
+
+Directly adjusts firmware System Performance Mode
+
+Power Save: Battery Saving
+Balanced: Intelligent Cooling
+Performance: Extreme Performance
 
 ## Others without comment
 - Camera
@@ -216,10 +238,8 @@ Libinput does not detect this. This might change if the bottom screen has full t
 
 If you're wanting to simply turn off the bottom display, you can change the state of either display as you please with manual scripts. I will look into providing some if requested via an Issue.
 
-## Untested
+### Haptics
 
-- Power profiles
-  - Plasma does provide a slider via Power Profiles Daemon. However, I haven't entirely tested the behavior. These have the possibility of not working.
-- Haptics
+Don't exactly have a reason to use this yet unless I can get a full size virtual keyboard that is tolerable. Don't have a way to thoroughly test this yet.
 
 
