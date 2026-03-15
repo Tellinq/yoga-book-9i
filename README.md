@@ -126,6 +126,8 @@ Note that enabling Setup Mode disables Secure Boot until you manually re-enable 
 
 # Touchscreens
 
+Patch below will be added in Kernel 7.0 (see commit [here](https://github.com/torvalds/linux/commit/822bc5b3744b0b2c2c9678aa1d80b2cf04fdfabf))
+
 See https://github.com/blhoward2/yogabook_patches for applying a patched kernel. Do note, once you remove your fingers from the bottom touchscreen, the screens and stylus will disconnect and reconnect. This can cause a visual stutter.
 
 Note that Window Managers and desktop environments may not support individually mapping to specific outputs on multiple touchscreens/stylus.
