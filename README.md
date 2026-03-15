@@ -39,12 +39,16 @@ This is not a guide. This simply lists what works and what limitations exist out
 
 ## What distribution should I use?
 
-This should not matter (mostly). What will matter is future kernel updates. So far, 6.18 LTS is in a state where a majority are working either out of the box, or with configuration. Please note, this laptop does require a large amount of configuration to make this usable.
+This should not matter (mostly). What will matter is future kernel updates. So far, Kernel 7.0 is in a state where a majority are working either out of the box, or with configuration. Please note, this laptop does require a large amount of configuration to make this usable.
+
+How my recommendations will work:
+- The bare minimum recommendation will be the kernel that includes the latest fixes for the Yoga Book 9i to be as usable as possible out of the box.
+- The recommended version will either be the same minimum, or a future LTS build if no changes are made upon release.
 
 Here's my general set of recommendations:
 
-Bare minimum: Distribution with kernel 6.16+. This includes fixes for the speakers.
-Recommendation: Distribution with kernel 6.18 LTS or newer. Once [Kernel.org bug 220386](https://bugzilla.kernel.org/show_bug.cgi?id=220386) is fixed in the kernel, my baseline recommendation will change.
+Bare minimum: Distribution with kernel 7.0+. This includes a [fix for separating the multi-touch devices](https://github.com/torvalds/linux/commit/822bc5b3744b0b2c2c9678aa1d80b2cf04fdfabf).
+Recommendation: Distribution with kernel 7.0+ for now. Once the next LTS release is available, this will be my new recommendation. There are still some patches that will need to be applied. If more are added to the kernel, then my baseline will change.
 
 The rest of what you're looking for in a distribution is up to you.
 
@@ -64,7 +68,7 @@ The IR Camera works with [howdy](https://github.com/boltgolt/howdy). Fedora-base
 ### Speakers
 
 > [!NOTE]
-> For best experience: Use Kernel 6.16+
+> For best experience: Use Kernel 7.0+
 
 You will need a listening script that can sync the bass speakers. Alternative, you can individually adjust the bass speakers.
 
