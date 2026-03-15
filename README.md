@@ -47,8 +47,8 @@ How my recommendations will work:
 
 Here's my general set of recommendations:
 
-Bare minimum: Distribution with kernel 7.0+. This includes a [fix for separating the multi-touch devices](https://github.com/torvalds/linux/commit/822bc5b3744b0b2c2c9678aa1d80b2cf04fdfabf).
-Recommendation: Distribution with kernel 7.0+ for now. Once the next LTS release is available, this will be my new recommendation. There are still some patches that will need to be applied. If more are added to the kernel, then my baseline will change.
+- Bare minimum: Distribution with kernel 7.0+. This includes a [fix for separating the multi-touch devices](https://github.com/torvalds/linux/commit/822bc5b3744b0b2c2c9678aa1d80b2cf04fdfabf).
+- Recommendation: Distribution with kernel 7.0+ for now. Once the next LTS release is available, this will be my new recommendation. There are still some patches that will need to be applied. If more are added to the kernel, then my baseline will change.
 
 The rest of what you're looking for in a distribution is up to you.
 
