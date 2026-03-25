@@ -197,11 +197,9 @@ I have a script in the works that adapts to KDE Plasma screen brightness. My mai
 
 > [!NOTE]
 > Requires `iio-sensors-proxy`
+> You must boot into Windows first, then reboot into Linux (not shutdown and boot back up). Otherwise you will be stuck at 120 lux
 
 Works if your window manager or desktop environment supports it. Research how you can use it on your desktop environment.
-
-> [!WARNING]
-> Most of the time I cannot get this to work. I did have a one off chance where I managed to get this to work. I'm not sure what triggered this. However, if yours is not stuck at 120 lux, you can use this as intended.
 
 ### External keyboard brightness
 
