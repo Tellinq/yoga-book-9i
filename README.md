@@ -186,8 +186,8 @@ I don't see desktop environments or window managers taking advantage of this, gi
 
 What works:
 - If someone is nearby (yes or no). I have also found this to also be determined if you look at the display specifically
-- Distance ranging from 0-10000, not sure what metric this is on
-- Attention detection (a separate sensor that will flip from 0 (not looking at the display) and 100 (looking at the screen). I find this to be unreliable, but it does povide results
+- Distance ranging from 0-10 meters
+- Attention detection (flips from 0 (not looking)/100 (looking). The Is Near sensor will flip to 0 first, then will flip back to 1 with Attention set to 0 once it detects there is someone still nearby but not looking)
 
 With all that said, this is enough data we can grab to make a script that handles multiple actions (such as adjusting screen brightness, toggling the display on/off, locking the screen, pausing media)
 
