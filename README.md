@@ -134,13 +134,14 @@ Patch below will be added in Kernel 7.0 (see commit [here](https://github.com/to
 
 See https://github.com/blhoward2/yogabook_patches for applying a patched kernel. Do note, once you remove your fingers from the bottom touchscreen, the screens and stylus will disconnect and reconnect. This can cause a visual stutter.
 
-Note that Window Managers and desktop environments may not support individually mapping to specific outputs on multiple touchscreens/stylus.
+I have found that applying https://github.com/acmilanfan/nixos-configs/blob/master/nixos/yogabook-gen10/configs/yogabook9i-hid.patch against Linux Kernel 7.0's current release does appease the disconnect and reconnect, unless you put more than 5 fingers on one of the screens. You can however put up to five fingers per display at the same time.
 
-Turning off the bottom screen will not keep touch support enabled, unlike on Windows where you can double tap to re-enable the bottom screen.
+Once there is proper support for 10 fingers, then I will look into this further.
 
-So far, a maximum of 5 fingers can be used at once. If you attempt to use both screens at the same time, the inputs will go back and forth uncontrollably.
-
-10 fingers on both screens is the current goal.
+> [!NOTE]
+> Some Window Managers and desktop environments may not support individually mapping to specific outputs on multiple touchscreens/stylus.
+> 
+> Turning off the bottom screen will not keep touch support enabled, unlike on Windows where you can double tap to re-enable the bottom screen.
 
 ### Function/Nonstandard key support
 
