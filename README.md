@@ -245,6 +245,6 @@ If you're wanting to simply turn off the bottom display, you can change the stat
 
 ### Haptics
 
-Don't exactly have a reason to use this yet unless I can get a full size virtual keyboard that is tolerable. Don't have a way to thoroughly test this yet.
+Cannot test. See #10
 
 
