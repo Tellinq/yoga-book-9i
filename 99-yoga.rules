@@ -1,0 +1,8 @@
+ACTION=="add", SUBSYSTEM=="hid", ATTR{idVendor}=="17ef", ATTR{idProduct}=="6161", RUN+="/bin/sh -c 'echo %k > /sys/bus/hid/drivers/hid-generic/unbind; echo %k > /sys/bus/hid/drivers/hid-multitouch/bind'"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="INGENIC Gadget Serial and keyboard Touchscreen Top", ENV{LIBINPUT_DEVICE_GROUP}="group_top", ENV{CUSTOM_ID}="touch_top", ENV{LIBINPUT_CALIBRATION_MATRIX}="-1 0 1 0 -1 1 0 0 1"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="INGENIC Gadget Serial and keyboard Stylus Top", ENV{LIBINPUT_DEVICE_GROUP}="group_top", ENV{CUSTOM_ID}="tablet_top", ENV{LIBINPUT_CALIBRATION_MATRIX}="-1 0 1 0 -1 1 0 0 1"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="INGENIC Gadget Serial and keyboard Touchscreen Bottom", ENV{LIBINPUT_DEVICE_GROUP}="group_bottom", ENV{CUSTOM_ID}="touch_bottom"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="INGENIC Gadget Serial and keyboard Stylus Bottom", ENV{LIBINPUT_DEVICE_GROUP}="group_bottom", ENV{CUSTOM_ID}="tablet_bottom"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="INGENIC Gadget Serial and keyboard Keyboard", ENV{LIBINPUT_IGNORE_DEVICE}="1"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="INGENIC Gadget Serial and keyboard Emulated Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="17ef", ATTR{idProduct}=="6161", ATTR{power/control}="on"
